@@ -3,7 +3,16 @@
 
 [![Build Status](https://travis-ci.org/hmrc/play-time.svg?branch=master)](https://travis-ci.org/hmrc/play-time) [ ![Download](https://api.bintray.com/packages/hmrc/releases/play-time/images/download.svg) ](https://bintray.com/hmrc/releases/play-time/_latestVersion)
 
-This is a placeholder README.md for a new repository
+Sometimes you need to have your service pretend it is some date the future in order to test certain behaviour.  
+This little library allows you to do just that.
+
+Currently supports fake dates.
+More specific fake dateTime to be added.
+
+
+resolvers += Resolver.bintrayRepo("hmrc", "releases")
+libraryDependencies += "uk.gov.hmrc" %% "play-time" % "[INSERT-VERSION]"
+  
 
 ### License
 
