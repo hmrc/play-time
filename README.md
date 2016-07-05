@@ -13,6 +13,10 @@ More specific fake dateTime to be added.
 resolvers += Resolver.bintrayRepo("hmrc", "releases")
 libraryDependencies += "uk.gov.hmrc" %% "play-time" % "[INSERT-VERSION]"
   
+## Set Date Using System Property 
+You can pass in the Java system property to set the date to whatever you want for local testing purposes as follows
+
+`-Dfeature.fakeDate=yyyy-MM-dd`
 
 ### License
 
