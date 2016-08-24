@@ -22,7 +22,7 @@ object DateHelper extends DateHelper
 
 trait DateHelper {
 
-  val fakeTimeOffsetInMillis: Long = {
+  def fakeTimeOffsetInMillis: Long = {
     getFakeDateString() match {
       case Some(s: String) => {
         val fakeTime = new LocalDate(s).toDateTimeAtStartOfDay().getMillis
