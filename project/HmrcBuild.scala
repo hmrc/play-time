@@ -17,7 +17,7 @@ object HmrcBuild extends Build {
       scalaVersion := "2.11.7",
       crossScalaVersions := Seq("2.11.7"),
       libraryDependencies ++= Seq(
-        Compile.playJson,
+        Compile.jodaTime,
         Test.scalaTest,
         Test.pegdown,
         Test.mockito,
@@ -30,7 +30,7 @@ object HmrcBuild extends Build {
 private object BuildDependencies {
 
   object Compile {
-    val playJson = "com.typesafe.play" %% "play-json" % "2.3.4" % "provided"
+    val jodaTime = "joda-time" % "joda-time" % "2.9.9"
   }
 
   sealed abstract class Test(scope: String) {
