@@ -29,7 +29,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
     }
   }
 
-  override protected def before(fun: => Any): Unit = clearFakeDateString()
+  protected def before(fun: => Any): Unit = clearFakeDateString()
 
   "DateHelper" should {
 
