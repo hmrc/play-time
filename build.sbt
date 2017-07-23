@@ -1,3 +1,5 @@
+import sbtrelease.ReleaseStateTransformations._
+
 lazy val root = (project in file(".")).
 settings(
     inThisBuild(List(
@@ -12,4 +14,17 @@ settings(
       "org.pegdown" % "pegdown" % "1.5.0" % Test,
       "org.hamcrest" % "hamcrest-all" % "1.3" % Test
     )
+)
+
+
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,              // : ReleaseStep
+  inquireVersions,                        // : ReleaseStep
+  runTest,                                // : ReleaseStep
+  setReleaseVersion,                      // : ReleaseStep
+  commitReleaseVersion,                   // : ReleaseStep, performs the initial git checks
+  tagRelease,                             // : ReleaseStep
+  setNextVersion,                         // : ReleaseStep
+  commitNextVersion,                      // : ReleaseStep
+  pushChanges                             // : ReleaseStep, also checks that an upstream branch is properly configured
 )
