@@ -15,7 +15,7 @@ object HmrcBuild extends Build {
     .settings(
       name := appName,
       scalaVersion := "2.11.7",
-      crossScalaVersions := Seq("2.11.7"),
+      crossScalaVersions := Seq("2.11.7", "2.12.1"),
       libraryDependencies ++= Seq(
         Compile.jodaTime,
         Test.scalaTest,
@@ -34,7 +34,7 @@ private object BuildDependencies {
   }
 
   sealed abstract class Test(scope: String) {
-    val scalaTest = "org.scalatest" %% "scalatest" % "2.2.4" % scope
+    val scalaTest = "org.scalatest" %% "scalatest" % "3.0.1" % scope
     val mockito = "org.mockito" % "mockito-all" % "1.9.5" % scope
     val pegdown = "org.pegdown" % "pegdown" % "1.5.0" % scope
     val hamcrest = "org.hamcrest" % "hamcrest-all" % "1.3" % scope
