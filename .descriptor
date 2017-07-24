@@ -2,7 +2,7 @@
     "package": {
         "name": "play-time",
         "repo": "liquidarmour",
-        "subject": "liquidarmour"
+        "subject": "liquidarmour",
         "vcs_url": "https://github.com/liquidarmour/playtime.git"
     },
 
