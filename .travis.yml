@@ -1,4 +1,3 @@
-
 sudo: false
 language: scala
 scala:
@@ -7,5 +6,7 @@ jdk:
 - oraclejdk8
 cache:
   directories:
-    - '$HOME/.ivy2/cache'
-    
+  - "$HOME/.ivy2/cache"
+deploy:
+  key:
+    secure: ABS02f7Kf2D6AJ3KBbd6INoDPjFbnPL3DrlGImPrs2yaAFOQ4jFsBnCyn3/t/m7kg9PGYgtfl5PfEDZrQB4yJeQ+b1C1KkdLBNWvD9GO3a/Dmqj7Z7eMNy6G3VIIgPu7V9Y9nepXd6ireNRVXSqVfZIByjKRws6/GAA8VdR4YzTckihY/5KcDSRVXWR078iXxfzZbOshCHQF3Mila8ClYQbPGuSBe6CHv9obljIDhtVSV6Ce6inSMpyt3zbW5SKI4rXUySmAkFuHy19WHvwJXWOlffjoTD3SK64/O3YcDWGnAK0dhwlwB7h3+TfypGeb98ZJRcXwFvpp8Z8iVqHYb1nUq0mryL7Um5JF8M5cF+AKiYhdFJtHE6OUrB6rMv+XGW1YLnyOUSxAmEuiSo9DA4507G2UPjbosX365SZWCSA0NPZjNKxHgUsU0bIkEIiRZEbPKQ/lPN4cV98pptE9zvT3c6Xd0zzq0hiTDsT3tFaw3Rxqc/8nomeEu0I+xt6P34SKbvW4LbfaNipdnW0GmKJpsU9VmL6wjDyIXE78XVaAfUDC4VGKZ8g+IR7dRU6LFKDLoF8OCRH/CS2CoPFfOyD5qtkHOVa5F+RDrfPiTX0hmcZ4VxR3wNEIwNjZUzihCbeJX+Qs40c8lAgnA/9y1R85FZ2SdTDl0BhSQSRy0uE=
