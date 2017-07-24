@@ -1,0 +1,18 @@
+{
+    "package": {
+        "name": "play-time",
+        "repo": "liquidarmour",
+        "subject": "liquidarmour"
+        "vcs_url": "https://github.com/liquidarmour/playtime.git"
+    },
+
+    "version": {
+        "name": "1.0.1-SNAPSHOT"
+    },
+
+    "files":
+        [
+        {"includePattern": "target/scala-2.12/play-time_2.12-.*\.jar"}
+        ],
+    "publish": true
+}
