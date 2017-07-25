@@ -9,6 +9,7 @@ jdk:
 cache:
   directories:
   - "$HOME/.ivy2/cache"
+before_deploy: before-deploy.sh
 deploy:
   provider: bintray
   user: liquidarmour

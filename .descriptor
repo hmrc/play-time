@@ -8,12 +8,12 @@
     },
 
     "version": {
-        "name": "${TRAVIS_BUILD_NUMBER}"
+        "name": "TESTING"
     },
 
     "files":
         [
-        {"includePattern": "target/scala-2.12/play-time_2.12-$TRAVIS_TAG.jar"}
+        {"includePattern": "target/scala-2.12/play-time_2.12-TESTING.jar"}
         ],
     "publish": true
 }
