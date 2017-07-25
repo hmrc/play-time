@@ -1,8 +1,8 @@
 {
     "package": {
-        "name": "liquidarmour",
+        "name": "play-time",
         "repo": "snapshots",
-        "subject": "liquid-armour",
+        "subject": "liquidarmour",
         "licenses": ["Apache-2.0"],
         "vcs_url": "https://github.com/liquidarmour/play-time.git"
     },
