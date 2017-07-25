@@ -6,11 +6,6 @@
         "licenses": ["Apache-2.0"],
         "vcs_url": "https://github.com/liquidarmour/play-time.git"
     },
-
-    "version": {
-        "name": "1.0.1-SNAPSHOT"
-    },
-
     "files":
         [
         {"includePattern": "target/scala-2.12/play-time_2.12-1.0.1-SNAPSHOT.jar"}
