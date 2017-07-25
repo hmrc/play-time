@@ -13,7 +13,7 @@
 
     "files":
         [
-        {"includePattern": "target/scala-2.12/play-time_2.12-${RELEASE_VERSION}.jar"}
+        {"includePattern": "target/scala-2.12/(.*).jar", "uploadPattern": "/$1"}
         ],
     "publish": true
 }
