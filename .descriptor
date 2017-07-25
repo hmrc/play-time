@@ -8,12 +8,12 @@
     },
 
     "version": {
-        "name": "TESTING"
+        "name": "${RELEASE_VERSION}"
     },
 
     "files":
         [
-        {"includePattern": "target/scala-2.12/play-time_2.12-TESTING.jar"}
+        {"includePattern": "target/scala-2.12/play-time_2.12-${RELEASE_VERSION}.jar"}
         ],
     "publish": true
 }
