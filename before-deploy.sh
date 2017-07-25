@@ -1,1 +1,0 @@
-sed -i "s/\${RELEASE_VERSION}/\$TRAVIS_TAG/g" ".descriptor"
