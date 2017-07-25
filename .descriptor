@@ -3,6 +3,7 @@
         "name": "play-time",
         "repo": "snapshots",
         "subject": "liquid-armour",
+        "licenses": ["Apache-2.0"],
         "vcs_url": "https://github.com/liquidarmour/play-time.git"
     },
 
