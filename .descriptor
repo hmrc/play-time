@@ -1,6 +1,6 @@
 {
     "package": {
-        "name": "play-time",
+        "name": "liquidarmour",
         "repo": "snapshots",
         "subject": "liquid-armour",
         "licenses": ["Apache-2.0"],
@@ -13,7 +13,7 @@
 
     "files":
         [
-        {"includePattern": "target/scala-2\.12/play-time_2.12-.*\.jar"}
+        {"includePattern": "./target/scala-2\.12/play-time_2.12-.*\.jar"}
         ],
     "publish": true
 }
