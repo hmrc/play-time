@@ -8,7 +8,7 @@
     },
 
     "version": {
-        "name": "$TRAVIS_TAG"
+        "name": "${TRAVIS_BUILD_NUMBER}"
     },
 
     "files":
