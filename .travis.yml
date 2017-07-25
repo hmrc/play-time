@@ -10,7 +10,7 @@ cache:
   directories:
   - "$HOME/.ivy2/cache"
 before_deploy:
-  sed -i "s/\${RELEASE_VERSION}/\${TRAVIS_TAG}/g" ".descriptor"
+  sed -i "s/\${RELEASE_VERSION}/$TRAVIS_TAG/g" ".descriptor"
 deploy:
   provider: bintray
   user: liquidarmour
