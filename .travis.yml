@@ -3,7 +3,7 @@ language: scala
 scala:
 - 2.12.2
 script:
-   - sbt test package
+   - sbt test package make-pom
 jdk:
 - oraclejdk8
 cache:
