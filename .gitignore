@@ -18,5 +18,6 @@ dist
 /.settings
 *.iws
 sed*
+.DS_Store
 
     
