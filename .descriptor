@@ -1,6 +1,6 @@
 {
     "package": {
-        "name": "liquidarmour.play-time.scala_2.12",
+        "name": "liquidarmour",
         "repo": "releases",
         "subject": "liquid-armour",
         "licenses": ["Apache-2.0"],
@@ -13,7 +13,7 @@
 
     "files":
         [
-        {"includePattern": "target/scala-2.12/(.*).jar", "uploadPattern": "/$1.jar"}
+        {"includePattern": "target/scala-2.12/(.*).jar", "uploadPattern": "playtime_2.12/$1.jar"}
         ],
     "publish": true
 }
