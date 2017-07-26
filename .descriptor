@@ -1,6 +1,6 @@
 {
     "package": {
-        "name": "liquidarmour.play-time",
+        "name": "liquidarmour.play-time.scala_2.12",
         "repo": "releases",
         "subject": "liquid-armour",
         "licenses": ["Apache-2.0"],
