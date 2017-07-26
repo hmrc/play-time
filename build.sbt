@@ -41,3 +41,11 @@ pomExtra :=
     <url>https://github.com/liquidarmour/play-time</url>
     <connection>git@github.com:liquidarmour/play-time.git</connection>
   </scm>
+    <repositories>
+      <repository>
+        <id>liquidarmourreleases</id>
+        <name>liquid-armour-releases</name>
+        <url>https://dl.bintray.com/liquid-armour/releases/</url>
+        <layout>default</layout>
+      </repository>
+    </repositories>
