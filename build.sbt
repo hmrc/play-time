@@ -49,3 +49,11 @@ pomExtra :=
         <layout>default</layout>
       </repository>
     </repositories>
+    <developers>
+      <developer>
+        <id>liquidarmour</id>
+        <name>James Williams</name>
+        <email>james@liquid-armour.co.uk</email>
+        <url>https://github.com/liquidarmour</url>
+      </developer>
+    </developers>
