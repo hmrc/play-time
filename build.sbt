@@ -31,6 +31,8 @@ releaseProcess := Seq[ReleaseStep](
 
 publishMavenStyle := true
 
+pomIncludeRepository := { _ => false }
+
 licenses := Seq("Apache 2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
 homepage := Some(url("https://github.com/liquidarmour/play-time"))
@@ -38,7 +40,7 @@ homepage := Some(url("https://github.com/liquidarmour/play-time"))
 scmInfo := Some(
   ScmInfo(
     url("https://github.com/liquidarmour/play-time"),
-    "scm:git@github.com:liquidarmour/play-time.git"
+    "git@github.com:liquidarmour/play-time.git"
   )
 )
 
@@ -50,3 +52,13 @@ developers := List(
     url   = url("https://github.com/liquidarmour")
   )
 )
+
+pomExtra :=
+<repositories>
+  <repository>
+    <id>liquidarmourreleases</id>
+    <name>liquid-armour-releases</name>
+    <url>https://dl.bintray.com/liquid-armour/releases/</url>
+    <layout>default</layout>
+  </repository>
+</repositories>
