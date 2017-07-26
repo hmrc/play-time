@@ -29,31 +29,24 @@ releaseProcess := Seq[ReleaseStep](
   pushChanges                             // : ReleaseStep, also checks that an upstream branch is properly configured
 )
 
-pomExtra :=
-  <licenses>
-    <license>
-      <name>Apache 2</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  <scm>
-    <url>https://github.com/liquidarmour/play-time</url>
-    <connection>git@github.com:liquidarmour/play-time.git</connection>
-  </scm>
-    <repositories>
-      <repository>
-        <id>liquidarmourreleases</id>
-        <name>liquid-armour-releases</name>
-        <url>https://dl.bintray.com/liquid-armour/releases/</url>
-        <layout>default</layout>
-      </repository>
-    </repositories>
-    <developers>
-      <developer>
-        <id>liquidarmour</id>
-        <name>James Williams</name>
-        <email>james@liquid-armour.co.uk</email>
-        <url>https://github.com/liquidarmour</url>
-      </developer>
-    </developers>
+publishMavenStyle := true
+
+licenses := Seq("Apache 2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
+
+homepage := Some(url("https://github.com/liquidarmour/play-time"))
+
+scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/liquidarmour/play-time"),
+    "scm:git@github.com:liquidarmour/play-time.git"
+  )
+)
+
+developers := List(
+  Developer(
+    id    = "liquidarmour",
+    name  = "James Williams",
+    email = "james@liquid-armour.co.uk",
+    url   = url("https://github.com/liquidarmour")
+  )
+)
