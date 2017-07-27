@@ -3,7 +3,7 @@ language: scala
 scala:
 - 2.12.2
 before_script:
-  git reset --hard origin/master
+  git checkout HEAD
 script:
 - sbt clean 'release with-defaults'
 jdk:
