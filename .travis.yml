@@ -2,10 +2,8 @@ sudo: false
 language: scala
 scala:
 - 2.12.2
-before_script:
-  git checkout HEAD
 script:
-- sbt clean 'release with-defaults'
+- sbt clean publish
 jdk:
 - oraclejdk8
 cache:
