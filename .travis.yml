@@ -11,7 +11,7 @@ cache:
   - "$HOME/.ivy2/cache"
 branches:
   only:
-  - master
+  - **
 env:
   global:
   - secure: pYSI1K/hcghf5jo6hm6ci/n0AGYFkOLrii7U4hqtY/1oKRuASF8uluFotS23ZpAUNSTOueWmpauxqIAOc7vuPZEll2H7K1Cq1Gf2mKwTS+Ko4lo9gnhd88hQ3ClwTHOJ2/cDhEd+ya8Xu+hmq18Rs83NZ3p/6W8KuX4KudAb787yjGWHrxeMLe6EJDxhwrO0E+bDmvmNUX6hZ1vYpSdB+w0LGNUX9g4bnmFAwExLW/7yYusnYNfRQnQxh3kOcWVORUidxw530ULykNCl9Lg0YHQf1erG0L8P6Ri7gZJ5SvC34Bzjm3YrQGYddpzHqTFz5MblHppC1hZEhIBUsOpkCvqkMLDFAZBrTkOV4oWWEscHaIMfSR+Y9QCF6QqFVMpqvQXMW4s6pFh81hpqHKbqzxTMH7usdWgR5MlRLhgWrzssKiePyzLsZnj+bJOfAYLP9g8en8cVB6YFID5pSKcgX/8mIdS7PmUNOARSKlzYeOO4sS8qRkSM58T4ayJynpCUc4S9q59a5DPwmk/BsJpdSFKwhPMtOEZxDrLfCtVd4u7t0ALCmLsQJ/mCSw8DiK60DvhuHoeWZYHmJNDM7O1C3jRqFvZWmlQtZzIHdjbuz48RbWIrLmGqohrg0hqQtCCGPFmi2S++nxCDtk5m9Eavchg7lwazUJ7rohskig0/KYA=
