@@ -29,6 +29,6 @@ releaseProcess := Seq[ReleaseStep](
   pushChanges                             // : ReleaseStep, also checks that an upstream branch is properly configured
 )
 
-licenses := Seq("Apache 2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
+licenses += ("Apache 2" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
 bintrayRepository := "maven"
