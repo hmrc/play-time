@@ -1,7 +1,7 @@
 
 # play-time
 
-[ ![Download](https://api.bintray.com/packages/liquid-armour/releases/liquidarmour.play-time/images/download.svg) ](https://bintray.com/liquid-armour/releases/liquidarmour.play-time/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/liquid-armour/maven/play-time/images/download.svg) ](https://bintray.com/liquid-armour/maven/play-time/_latestVersion)
 
 Sometimes you need to have your service pretend it is some date the future in order to test certain behaviour.  
 This little library allows you to do just that.

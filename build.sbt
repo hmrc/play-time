@@ -16,7 +16,6 @@ settings(
     )
 )
 
-
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,              // : ReleaseStep
   inquireVersions,                        // : ReleaseStep
