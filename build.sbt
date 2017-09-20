@@ -30,4 +30,4 @@ releaseProcess := Seq[ReleaseStep](
 
 licenses += ("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
 
-bintrayOrganization := Some("liquid-armour")
+bintrayOrganization := Some("liquid-armour-software")
