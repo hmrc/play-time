@@ -4,7 +4,7 @@ lazy val root = (project in file(".")).
 settings(
     inThisBuild(List(
         organization    := "liquidarmour",
-        scalaVersion    := "2.12.3"
+        scalaVersion    := "2.12.4"
     )),
     name := "play-time",
     libraryDependencies ++= Seq(
