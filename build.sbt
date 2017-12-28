@@ -16,6 +16,10 @@ settings(
     )
 )
 
+releaseCommitMessage := "Setting version to " +
+  s"${if (releaseUseGlobalVersion.value) (version in ThisBuild).value else version.value}" +
+  s"${if (releaseUseGlobalVersion.value && version.value.endsWith("-SNAPSHOT")) " [ci skip]" else ""}"
+
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,              // : ReleaseStep
   inquireVersions,                        // : ReleaseStep
