@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 HM Revenue & Customs
+ * Copyright 2017 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,4 +52,3 @@ trait DateHelper {
   // need this so can override in testing
   protected[time] def getCurrentDate() = new LocalDate()
 }
-

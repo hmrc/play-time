@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 HM Revenue & Customs
+ * Copyright 2017 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
     }
   }
 
-  override protected def before(fun: => Any): Unit = clearFakeDateString()
+  protected def before(fun: => Any): Unit = clearFakeDateString()
 
   "DateHelper" should {
 
