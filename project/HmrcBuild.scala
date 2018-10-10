@@ -1,7 +1,10 @@
-import sbt._
+import sbt.{Def, _}
 import sbt.Keys._
 import uk.gov.hmrc.SbtAutoBuildPlugin
 import uk.gov.hmrc.versioning.SbtGitVersioning
+import uk.gov.hmrc.versioning.SbtGitVersioning.autoImport.majorVersion
+import uk.gov.hmrc.SbtArtifactory
+import uk.gov.hmrc.SbtArtifactory.autoImport.makePublicallyAvailableOnBintray
 
 object HmrcBuild extends Build {
 
@@ -11,7 +14,9 @@ object HmrcBuild extends Build {
   val appName = "play-time"
 
   lazy val PlayTime = (project in file("."))
-    .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning)
+    .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning, SbtArtifactory)
+    .settings(majorVersion := 0)
+    .settings(makePublicallyAvailableOnBintray := true)
     .settings(
       name := appName,
       scalaVersion := "2.11.7",
@@ -46,5 +51,5 @@ private object BuildDependencies {
 
 object Developers {
 
-  def apply() = developers := List[Developer]()
+  def apply(): Def.Setting[List[Developer]] = developers := List[Developer]()
 }

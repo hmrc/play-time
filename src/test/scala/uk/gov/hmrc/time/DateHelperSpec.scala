@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 HM Revenue & Customs
+ * Copyright 2018 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,8 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
 
     "return empty fakeTimeOffset when not set" in  {
       val pretendActualDate: String = "2001-01-01"
-      val dateHelper = new TestDateHelper(pretendActualDate)
-      dateHelper.getFakeDateOffset() shouldBe(0)
+      val dateHelper = TestDateHelper(pretendActualDate)
+      dateHelper.getFakeDateOffset() shouldBe 0
     }
 
     "return fakeTimeOffset with date in future" in  {
@@ -44,9 +44,9 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
       val pretendActualDate: String = "2001-01-01"
 
       setFakeDateString(fakeDate)
-      val dateHelper = new TestDateHelper(pretendActualDate)
+      val dateHelper = TestDateHelper(pretendActualDate)
 
-      dateHelper.getFakeDateOffset() shouldBe(86400000L) //millis in 1 day
+      dateHelper.getFakeDateOffset() shouldBe 86400000L //millis in 1 day
     }
 
     "return fakeTimeOffset with date in past" in  {
@@ -54,7 +54,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
       val pretendActualDate: String = "2001-01-02"
 
       setFakeDateString(fakeDate)
-      val dateHelper = new TestDateHelper(pretendActualDate)
+      val dateHelper = TestDateHelper(pretendActualDate)
 
       dateHelper.getFakeDateOffset() shouldBe(-86400000L) //millis in 1 day
     }
