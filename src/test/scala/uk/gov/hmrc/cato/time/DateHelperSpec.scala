@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 HM Revenue & Customs
+ * Copyright 2018 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
 
   case class TestDateHelper(fakeCurrentDate: String = new LocalDate().toString) extends DateHelper {
 
-    override def getCurrentDate() = {
+    override def getCurrentDate(): LocalDate = {
       new LocalDate(fakeCurrentDate)
     }
   }
@@ -35,8 +35,8 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
 
     "return empty fakeTimeOffset when not set" in  {
       val pretendActualDate: String = "2001-01-01"
-      val dateHelper = new TestDateHelper(pretendActualDate)
-      dateHelper.getFakeDateOffset() shouldBe(0)
+      val dateHelper = TestDateHelper(pretendActualDate)
+      dateHelper.getFakeDateOffset() shouldBe 0
     }
 
     "return fakeTimeOffset with date in future" in  {
@@ -44,9 +44,9 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
       val pretendActualDate: String = "2001-01-01"
 
       setFakeDateString(fakeDate)
-      val dateHelper = new TestDateHelper(pretendActualDate)
+      val dateHelper = TestDateHelper(pretendActualDate)
 
-      dateHelper.getFakeDateOffset() shouldBe(86400000L) //millis in 1 day
+      dateHelper.getFakeDateOffset() shouldBe 86400000L //millis in 1 day
     }
 
     "return fakeTimeOffset with date in past" in  {
@@ -54,7 +54,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
       val pretendActualDate: String = "2001-01-02"
 
       setFakeDateString(fakeDate)
-      val dateHelper = new TestDateHelper(pretendActualDate)
+      val dateHelper = TestDateHelper(pretendActualDate)
 
       dateHelper.getFakeDateOffset() shouldBe(-86400000L) //millis in 1 day
     }
@@ -78,6 +78,21 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
       dateHelper.now() shouldBe new LocalDate().plusDays(1).toDateTimeAtStartOfDay().toLocalDate
     }
 
+    "detect time set ahead" in {
+      val dateString: String = new LocalDate().plusDays(1).toDateTimeAtStartOfDay.toLocalDate.toString
+      setFakeDateString(dateString)
+
+      val dateHelper = TestDateHelper()
+      dateHelper.isNowSetAhead shouldBe true
+    }
+
+    "return now in long String format" in {
+      val dateString: String = new LocalDate(2052, 12, 31).toDateTimeAtStartOfDay.toLocalDate.toString
+      setFakeDateString(dateString)
+
+      val dateHelper = TestDateHelper()
+      dateHelper.getFakeDateLongString().get shouldBe "2052-12-31T00:00:00"
+    }
   }
 
 

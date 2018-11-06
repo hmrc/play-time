@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 HM Revenue & Customs
+ * Copyright 2018 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,13 +22,12 @@ object DateHelper extends DateHelper
 
 trait DateHelper {
 
-  def fakeTimeOffsetInMillis: Long = {
+  def fakeTimeOffsetInMillis(): Long = {
     getFakeDateString() match {
-      case Some(s: String) => {
+      case Some(s: String) =>
         val fakeTime = new LocalDate(s).toDateTimeAtStartOfDay().getMillis
         val currentTime = getCurrentDate().toDateTimeAtStartOfDay.getMillis
         fakeTime - currentTime
-      }
       case _ => 0
     }
 
@@ -41,15 +40,20 @@ trait DateHelper {
     }
   }
 
-  def getFakeDateString() = {
+  def getFakeDateString(): Option[String] = {
     sys.props.get("feature.fakeDate")
   }
 
-  def isFakeDateActive() = getFakeDateString().nonEmpty
+  def getFakeDateLongString(): Option[String] = {
+    getFakeDateString.map(_ + "T00:00:00")
+  }
+
+  def isFakeDateActive(): Boolean = getFakeDateString().nonEmpty
 
   def getFakeDateOffset(): Long = fakeTimeOffsetInMillis
+
+  def isNowSetAhead(): Boolean = isFakeDateActive() && getCurrentDate.isBefore(now())
 
   // need this so can override in testing
   protected[time] def getCurrentDate() = new LocalDate()
 }
-
