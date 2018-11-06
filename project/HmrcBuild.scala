@@ -2,6 +2,9 @@ import sbt.{Def, _}
 import sbt.Keys._
 import uk.gov.hmrc.SbtAutoBuildPlugin
 import uk.gov.hmrc.versioning.SbtGitVersioning
+import uk.gov.hmrc.versioning.SbtGitVersioning.autoImport.majorVersion
+import uk.gov.hmrc.SbtArtifactory
+import uk.gov.hmrc.SbtArtifactory.autoImport.makePublicallyAvailableOnBintray
 
 object HmrcBuild extends Build {
 
@@ -11,13 +14,16 @@ object HmrcBuild extends Build {
   val appName = "play-time"
 
   lazy val PlayTime = (project in file("."))
-    .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning)
+    .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning, SbtArtifactory)
+    .settings(majorVersion := 0)
+    .settings(makePublicallyAvailableOnBintray := true)
     .settings(
       name := appName,
-      scalaVersion := "2.11.11",
-      crossScalaVersions := Seq("2.11.11"),
+      scalaVersion := "2.11.12",
+      crossScalaVersions := Seq("2.11.12"),
       libraryDependencies ++= Seq(
         Compile.playJson,
+        Compile.jodaTime,
         Test.scalaTest,
         Test.pegdown,
         Test.mockito,
@@ -31,6 +37,7 @@ private object BuildDependencies {
 
   object Compile {
     val playJson = "com.typesafe.play" %% "play-json" % "2.3.10" % "provided"
+    val jodaTime = "joda-time" % "joda-time" % "2.10"
   }
 
   sealed abstract class Test(scope: String) {
