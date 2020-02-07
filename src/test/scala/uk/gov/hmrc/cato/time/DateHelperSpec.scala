@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package uk.gov.hmrc.cato.time
 
 import org.joda.time.LocalDate
-import org.scalatest.mock.MockitoSugar
 import org.scalatest.{BeforeAndAfter, Matchers, WordSpec}
+import org.scalatestplus.mockito.MockitoSugar
 
 class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with BeforeAndAfter {
 
@@ -29,7 +28,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
     }
   }
 
-  override protected def before(fun: => Any): Unit = clearFakeDateString()
+  override protected def before(fun: => Any)(implicit pos : org.scalactic.source.Position): Unit = clearFakeDateString()
 
   "DateHelper" should {
 
