@@ -27,12 +27,12 @@ lazy val PlayTime = (project in file("."))
     developersList()
   )
 
-val playJson = "com.typesafe.play" %% "play-json" % "2.3.10" % "provided"
-val jodaTime = "joda-time" % "joda-time" % "2.10"
+val playJson = "com.typesafe.play" %% "play-json" % "2.6.14" % "provided"
+val jodaTime = "joda-time" % "joda-time" % "2.10.5"
 
-val scalaTest = "org.scalatest" %% "scalatest" % "2.2.6" % scope
-val mockito = "org.mockito" % "mockito-all" % "1.9.5" % scope
-val pegdown = "org.pegdown" % "pegdown" % "1.5.0" % scope
+val scalaTest = "org.scalatest" %% "scalatest" % "3.0.8" % scope
+val mockito = "org.mockito" % "mockito-all" % "1.10.19" % scope
+val pegdown = "org.pegdown" % "pegdown" % "1.6.0" % scope
 val hamcrest = "org.hamcrest" % "hamcrest-all" % "1.3" % scope
 
 lazy val scope = "test"
