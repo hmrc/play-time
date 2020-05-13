@@ -28,7 +28,7 @@ lazy val PlayTime = (project in file("."))
   )
 
 val playJson = "com.typesafe.play" %% "play-json" % "2.6.14" % "provided"
-val jodaTime = "joda-time" % "joda-time" % "2.10.5"
+val jodaTime = "joda-time" % "joda-time" % "2.10.6"
 
 val scalaTest = "org.scalatest" %% "scalatest" % "3.0.8" % scope
 val mockito = "org.mockito" % "mockito-all" % "1.10.19" % scope
