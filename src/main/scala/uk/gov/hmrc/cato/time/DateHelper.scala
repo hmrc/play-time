@@ -34,7 +34,7 @@ trait DateHelper {
   }
 
   def now(): LocalDate = {
-    getFakeDateString() match {
+    retry(3, getFakeDateString()) match {
       case None => getCurrentDate()
       case Some(d) => new LocalDate(getCurrentDate().toDateTimeAtCurrentTime.getMillis + getFakeDateOffset())
     }
@@ -43,6 +43,16 @@ trait DateHelper {
   def getFakeDateString(): Option[String] = {
     sys.props.get("feature.fakeDate")
   }
+
+  def retry(n: Int, fn: => Option[String]): Option[String] = {
+    val r = try { Some(fn) } catch { case e: Exception if n > 1 => None }
+
+    r match {
+      case Some(x) => x
+      case None => retry(n-1, fn)
+    }
+  }
+
 
   def getFakeDateLongString(): Option[String] = {
     getFakeDateString.map(_ + "T00:00:00")
