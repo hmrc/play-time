@@ -18,6 +18,8 @@ package uk.gov.hmrc.cato.time
 
 import org.joda.time.LocalDate
 
+import scala.util.Try
+
 object DateHelper extends DateHelper
 
 trait DateHelper {
@@ -45,9 +47,10 @@ trait DateHelper {
   }
 
   def retry(n: Int, fn: => Option[String]): Option[String] = {
-    val r = try { Some(fn) } catch {
-      case e: Exception if n > 1 => retry(n-1, fn)
-      case _ => r
+    Try { fn } match {
+      case util.Success(x) => x
+      case _ if n > 1 => retry(n - 1, fn)
+      case util.Failure(e) => throw e
     }
   }
 
