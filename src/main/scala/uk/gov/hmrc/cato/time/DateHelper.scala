@@ -45,11 +45,9 @@ trait DateHelper {
   }
 
   def retry(n: Int, fn: => Option[String]): Option[String] = {
-    val r = try { Some(fn) } catch { case e: Exception if n > 1 => None }
-
-    r match {
-      case Some(x) => x
-      case None => retry(n-1, fn)
+    val r = try { Some(fn) } catch {
+      case e: Exception if n > 1 => retry(n-1, fn)
+      case _ => r
     }
   }
 
