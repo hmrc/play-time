@@ -14,7 +14,7 @@ lazy val PlayTime = (project in file("."))
   .settings(makePublicallyAvailableOnBintray := true)
   .settings(
     name := appName,
-    scalaVersion := "2.11.12",
+    scalaVersion := "2.12.11",
     crossScalaVersions := Seq("2.11.12"),
     libraryDependencies ++= Seq(
       playJson,
@@ -23,8 +23,7 @@ lazy val PlayTime = (project in file("."))
       pegdown,
       mockito,
       hamcrest
-    ),
-    developersList()
+    )
   )
 
 val playJson = "com.typesafe.play" %% "play-json" % "2.6.14" % "provided"
@@ -36,6 +35,3 @@ val pegdown = "org.pegdown" % "pegdown" % "1.6.0" % scope
 val hamcrest = "org.hamcrest" % "hamcrest-all" % "1.3" % scope
 
 lazy val scope = "test"
-
-def developersList(): Def.Setting[List[Developer]] = developers := List[Developer]()
-
