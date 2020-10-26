@@ -15,7 +15,7 @@ lazy val PlayTime = (project in file("."))
   .settings(
     name := appName,
     scalaVersion := "2.12.11",
-    crossScalaVersions := Seq("2.11.12"),
+    crossScalaVersions := Seq("2.11.12", "2.12.11"),
     libraryDependencies ++= Seq(
       playJson,
       jodaTime,
