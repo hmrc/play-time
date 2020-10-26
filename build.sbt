@@ -8,14 +8,15 @@ import uk.gov.hmrc.SbtArtifactory.autoImport.makePublicallyAvailableOnBintray
 
 val appName = "play-time"
 
+val scala2_12 = "2.12.11"
+
 lazy val PlayTime = (project in file("."))
   .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning, SbtArtifactory)
-  .settings(majorVersion := 0)
-  .settings(makePublicallyAvailableOnBintray := true)
   .settings(
     name := appName,
-    scalaVersion := "2.11.12",
-    crossScalaVersions := Seq("2.11.12"),
+    majorVersion := 0,
+    scalaVersion := scala2_12,
+    makePublicallyAvailableOnBintray := true,
     libraryDependencies ++= Seq(
       playJson,
       jodaTime,
@@ -23,8 +24,7 @@ lazy val PlayTime = (project in file("."))
       pegdown,
       mockito,
       hamcrest
-    ),
-    developersList()
+    )
   )
 
 val playJson = "com.typesafe.play" %% "play-json" % "2.6.14" % "provided"
@@ -36,6 +36,3 @@ val pegdown = "org.pegdown" % "pegdown" % "1.6.0" % scope
 val hamcrest = "org.hamcrest" % "hamcrest-all" % "1.3" % scope
 
 lazy val scope = "test"
-
-def developersList(): Def.Setting[List[Developer]] = developers := List[Developer]()
-
