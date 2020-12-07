@@ -96,7 +96,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
   }
 
 
-  private def clearFakeDateString() = sys.props.remove("feature.fakeDate")
+  private def clearFakeDateString() = System.clearProperty("feature.fakeDate")
 
-  private def setFakeDateString(dateString: String): Option[String] = sys.props.put("feature.fakeDate", dateString)
+  private def setFakeDateString(dateString: String): String = System.setProperty("feature.fakeDate", dateString)
 }
