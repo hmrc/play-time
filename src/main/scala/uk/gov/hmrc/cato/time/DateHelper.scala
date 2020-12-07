@@ -36,24 +36,15 @@ trait DateHelper {
   }
 
   def now(): LocalDate = {
-    retry(3, getFakeDateString()) match {
+    getFakeDateString() match {
       case None => getCurrentDate()
       case Some(d) => new LocalDate(getCurrentDate().toDateTimeAtCurrentTime.getMillis + getFakeDateOffset())
     }
   }
 
   def getFakeDateString(): Option[String] = {
-    sys.props.get("feature.fakeDate")
+    Option(System.getProperty("feature.fakeDate"))
   }
-
-  def retry(n: Int, fn: => Option[String]): Option[String] = {
-    Try { fn } match {
-      case util.Success(x) => x
-      case _ if n > 1 => retry(n - 1, fn)
-      case util.Failure(e) => throw e
-    }
-  }
-
 
   def getFakeDateLongString(): Option[String] = {
     getFakeDateString.map(_ + "T00:00:00")
