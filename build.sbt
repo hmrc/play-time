@@ -4,7 +4,6 @@ import uk.gov.hmrc.SbtAutoBuildPlugin
 import uk.gov.hmrc.versioning.SbtGitVersioning
 import uk.gov.hmrc.versioning.SbtGitVersioning.autoImport.majorVersion
 import uk.gov.hmrc.SbtArtifactory
-import uk.gov.hmrc.SbtArtifactory.autoImport.makePublicallyAvailableOnBintray
 
 val appName = "play-time"
 
@@ -16,7 +15,7 @@ lazy val PlayTime = (project in file("."))
     name := appName,
     majorVersion := 0,
     scalaVersion := scala2_12,
-    makePublicallyAvailableOnBintray := true,
+    isPublicArtefact := true,
     libraryDependencies ++= Seq(
       playJson,
       jodaTime,
