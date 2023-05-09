@@ -1,20 +1,18 @@
-import sbt.{Def, _}
+import sbt._
 import sbt.Keys._
 import uk.gov.hmrc.SbtAutoBuildPlugin
-import uk.gov.hmrc.versioning.SbtGitVersioning
 import uk.gov.hmrc.versioning.SbtGitVersioning.autoImport.majorVersion
-import uk.gov.hmrc.SbtArtifactory
 
 val appName = "play-time"
 
-val scala2_12 = "2.12.11"
+val scala2_13 = "2.13.10"
 
 lazy val PlayTime = (project in file("."))
-  .enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning, SbtArtifactory)
+  .enablePlugins(SbtAutoBuildPlugin)
   .settings(
     name := appName,
     majorVersion := 0,
-    scalaVersion := scala2_12,
+    scalaVersion := scala2_13,
     isPublicArtefact := true,
     libraryDependencies ++= Seq(
       playJson,
@@ -26,7 +24,7 @@ lazy val PlayTime = (project in file("."))
     )
   )
 
-val playJson = "com.typesafe.play" %% "play-json" % "2.6.14" % "provided"
+val playJson = "com.typesafe.play" %% "play-json" % "2.9.4" % "provided"
 val jodaTime = "joda-time" % "joda-time" % "2.10.6"
 
 val scalaTest = "org.scalatest" %% "scalatest" % "3.0.8" % scope
