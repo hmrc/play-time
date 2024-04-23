@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,23 @@
 
 package uk.gov.hmrc.cato.time
 
-import org.joda.time.LocalDate
+import java.time.temporal.ChronoUnit
+import java.time.{LocalDate, LocalDateTime, ZoneOffset}
+import scala.util.Try
 
 object DateHelper extends DateHelper
 
 trait DateHelper {
 
   def fakeTimeOffsetInMillis(): Long = {
-    getFakeDateString() match {
+    getFakeDateString match {
       case Some(s: String) =>
-        val fakeTime = new LocalDate(s).toDateTimeAtStartOfDay().getMillis
-        val currentTime = getCurrentDate().toDateTimeAtStartOfDay.getMillis
+        val fakeTime = {
+          Try(LocalDate.parse(s))
+            .getOrElse(LocalDateTime.parse(s).toLocalDate).atStartOfDay()
+            .toInstant(ZoneOffset.UTC).toEpochMilli
+        }
+        val currentTime = getCurrentDate.atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli
         fakeTime - currentTime
       case _ => 0
     }
@@ -34,26 +40,26 @@ trait DateHelper {
   }
 
   def now(): LocalDate = {
-    getFakeDateString() match {
-      case None => getCurrentDate()
-      case Some(d) => new LocalDate(getCurrentDate().toDateTimeAtCurrentTime.getMillis + getFakeDateOffset())
+    getFakeDateString match {
+      case None => getCurrentDate
+      case Some(_) => getCurrentDate.atStartOfDay().plus(getFakeDateOffset, ChronoUnit.MILLIS).toLocalDate
     }
   }
 
-  def getFakeDateString(): Option[String] = {
+  def getFakeDateString: Option[String] = {
     Option(System.getProperty("feature.fakeDate"))
   }
 
-  def getFakeDateLongString(): Option[String] = {
-    getFakeDateString.map(_ + "T00:00:00")
+  def getFakeDateLongString: Option[String] = {
+    getFakeDateString.map(_ + ":00")
   }
 
-  def isFakeDateActive(): Boolean = getFakeDateString().nonEmpty
+  def isFakeDateActive: Boolean = getFakeDateString.nonEmpty
 
-  def getFakeDateOffset(): Long = fakeTimeOffsetInMillis
+  def getFakeDateOffset: Long = fakeTimeOffsetInMillis()
 
-  def isNowSetAhead(): Boolean = isFakeDateActive() && getCurrentDate.isBefore(now())
+  def isNowSetAhead: Boolean = isFakeDateActive && getCurrentDate.isBefore(now())
 
   // need this so can override in testing
-  protected[time] def getCurrentDate() = new LocalDate()
+  protected[time] def getCurrentDate = LocalDate.now()
 }

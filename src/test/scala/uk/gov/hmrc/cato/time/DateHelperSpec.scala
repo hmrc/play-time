@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2024 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,16 @@
 
 package uk.gov.hmrc.cato.time
 
-import org.joda.time.LocalDate
+import java.time.LocalDate
 import org.scalatest.{BeforeAndAfter, Matchers, WordSpec}
 import org.scalatestplus.mockito.MockitoSugar
 
 class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with BeforeAndAfter {
 
-  case class TestDateHelper(fakeCurrentDate: String = new LocalDate().toString) extends DateHelper {
+  case class TestDateHelper(fakeCurrentDate: String = LocalDate.now().toString) extends DateHelper {
 
-    override def getCurrentDate(): LocalDate = {
-      new LocalDate(fakeCurrentDate)
+    override def getCurrentDate: LocalDate = {
+      LocalDate.parse(fakeCurrentDate)
     }
   }
 
@@ -36,7 +36,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
     "return empty fakeTimeOffset when not set" in  {
       val pretendActualDate: String = "2001-01-01"
       val dateHelper = TestDateHelper(pretendActualDate)
-      dateHelper.getFakeDateOffset() shouldBe 0
+      dateHelper.getFakeDateOffset shouldBe 0
     }
 
     "return fakeTimeOffset with date in future" in  {
@@ -46,7 +46,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
       setFakeDateString(fakeDate)
       val dateHelper = TestDateHelper(pretendActualDate)
 
-      dateHelper.getFakeDateOffset() shouldBe 86400000L //millis in 1 day
+      dateHelper.getFakeDateOffset shouldBe 86400000L //millis in 1 day
     }
 
     "return fakeTimeOffset with date in past" in  {
@@ -56,7 +56,7 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
       setFakeDateString(fakeDate)
       val dateHelper = TestDateHelper(pretendActualDate)
 
-      dateHelper.getFakeDateOffset() shouldBe(-86400000L) //millis in 1 day
+      dateHelper.getFakeDateOffset shouldBe(-86400000L) //millis in 1 day
     }
 
     "return date specified by sys prop when asked" in {
@@ -66,20 +66,20 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
       setFakeDateString(dateString)
       val dateHelper = TestDateHelper(pretendActualDate)
 
-      dateHelper.now() shouldBe new LocalDate(dateString)
+      dateHelper.now() shouldBe LocalDate.parse(dateString)
     }
 
     "return date specified by sys prop when asked (always tomorrow)" in {
 
-      val dateString: String = new LocalDate().plusDays(1).toDateTimeAtStartOfDay.toLocalDate.toString
+      val dateString: String = LocalDate.now().plusDays(1).atStartOfDay().toString
       setFakeDateString(dateString)
 
       val dateHelper = TestDateHelper()
-      dateHelper.now() shouldBe new LocalDate().plusDays(1).toDateTimeAtStartOfDay().toLocalDate
+      dateHelper.now() shouldBe LocalDate.now().plusDays(1).atStartOfDay().toLocalDate
     }
 
     "detect time set ahead" in {
-      val dateString: String = new LocalDate().plusDays(1).toDateTimeAtStartOfDay.toLocalDate.toString
+      val dateString: String = LocalDate.now().plusDays(1).atStartOfDay().toString
       setFakeDateString(dateString)
 
       val dateHelper = TestDateHelper()
@@ -87,11 +87,11 @@ class DateHelperSpec extends WordSpec with MockitoSugar with Matchers with Befor
     }
 
     "return now in long String format" in {
-      val dateString: String = new LocalDate(2052, 12, 31).toDateTimeAtStartOfDay.toLocalDate.toString
+      val dateString: String = LocalDate.of(2052, 12, 31).atStartOfDay().toString
       setFakeDateString(dateString)
 
       val dateHelper = TestDateHelper()
-      dateHelper.getFakeDateLongString().get shouldBe "2052-12-31T00:00:00"
+      dateHelper.getFakeDateLongString.get shouldBe "2052-12-31T00:00:00"
     }
   }
 
